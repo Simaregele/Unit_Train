@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#18352d">
+<title>ქართული · Мнемотренажёр</title>
+<style>
+:root{--bg:#eef1eb;--panel:#fffdf8;--text:#17201c;--muted:#6b756e;--line:#dce1da;--accent:#2f6b55;--good:#22754a;--bad:#a6453d;--soft:#e7eee9;--shadow:0 22px 70px rgba(25,45,36,.12)}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 0 0,#d7e8df 0,transparent 28%),radial-gradient(circle at 100% 0,#f0e5ce 0,transparent 26%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}.app{max-width:980px;margin:auto;padding:18px 14px 46px}header{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:13px}h1{font-size:clamp(28px,6vw,46px);margin:0;letter-spacing:-.045em}.sub{color:var(--muted);margin-top:5px;line-height:1.45}.links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.links a{color:var(--accent);text-decoration:none;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-size:13px;font-weight:700}.toolbar{background:rgba(255,253,248,.88);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 35px rgba(15,23,42,.05);border-radius:18px;padding:12px;display:grid;grid-template-columns:1.35fr 1fr auto;gap:10px;margin-bottom:14px}select,button{font:inherit}select{width:100%;border:1px solid var(--line);background:#f7f8f5;border-radius:12px;padding:10px;color:var(--text)}button{border:0;border-radius:13px;padding:11px 14px;font-weight:750;cursor:pointer}.shuffle{background:var(--soft);color:var(--text)}.statusbar{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:13px;margin:7px 2px 12px}.pill{padding:6px 9px;border-radius:999px;background:#fff;border:1px solid var(--line)}.stage{perspective:1400px;max-width:680px;margin:auto}.card{position:relative;height:min(68vh,660px);min-height:500px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.75,.2,1);cursor:pointer}.card.flipped{transform:rotateY(180deg)}.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:28px;overflow:hidden;background:var(--panel);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow)}.back{transform:rotateY(180deg)}.frontInner,.answerText{height:100%;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.frontWord{font-family:"Noto Sans Georgian","DejaVu Sans",sans-serif;font-size:clamp(58px,13vw,100px);font-weight:800;line-height:1.1}.frontRu{font-size:clamp(34px,8vw,64px);font-weight:800}.hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#97a099;font-size:12px}.scene{height:100%;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(circle at 50% 30%,#fff7db,transparent 35%),linear-gradient(145deg,#e8f1eb,#fff5e7)}.emojiScene{font-size:clamp(82px,22vw,150px);line-height:1.05;letter-spacing:.02em;filter:drop-shadow(0 12px 18px rgba(0,0,0,.10));max-width:90%;word-break:break-word;text-align:center}.sceneImg{width:100%;height:100%;object-fit:cover;object-position:center bottom}.answerText{justify-content:flex-start;overflow:auto;padding-top:24px}.answerKa{font-family:"Noto Sans Georgian","DejaVu Sans",sans-serif;font-weight:800;font-size:clamp(43px,9vw,74px);line-height:1.1;margin-top:8px}.reading{font-size:clamp(22px,5vw,31px);font-weight:780;margin-top:10px}.meaning{font-size:clamp(22px,5vw,32px);color:#48534d;margin-top:6px}.mnemo{margin:20px auto 16px;width:min(520px,100%);padding:17px;border-radius:18px;background:#edf4ef;border:1px solid #d7e5dc;text-align:left;line-height:1.48}.mnemo b{color:var(--accent)}.answerImage{width:min(440px,92%);max-height:47%;object-fit:contain;border-radius:17px;margin-top:13px;border:1px solid var(--line);background:white}.speak{position:absolute;right:15px;top:15px;width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 7px 18px rgba(0,0,0,.08);font-size:20px;z-index:4}.actions{max-width:680px;margin:13px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}.again{background:#f6e3e1;color:var(--bad)}.good{background:#e1f0e6;color:var(--good)}.next{background:var(--accent);color:white}.progress{height:7px;background:#dfe5df;border-radius:99px;overflow:hidden;max-width:680px;margin:14px auto 0}.progress i{display:block;height:100%;background:var(--accent);width:0}.empty{text-align:center;padding:50px;color:var(--muted)}@media(max-width:680px){header{display:block}.links{justify-content:flex-start;margin-top:10px}.toolbar{grid-template-columns:1fr 1fr}.toolbar .shuffle{grid-column:1/-1}.card{height:66vh;min-height:460px}.frontInner,.answerText{padding:20px}.actions{grid-template-columns:1fr 1fr}.next{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div><h1>ქართული · мнемокарточки</h1><div class="sub">Вспоминай по грузинскому слову или по картинке. Нажми карточку — увидишь ответ.</div></div><div class="links"><a href="https://docs.google.com/spreadsheets/d/1dZ2_2VIDSQiIjXYH7lVPv5mu478AvjfUj3uT-g12ZuM/edit" target="_blank">Google Sheet</a><a href="https://drive.google.com/drive/folders/1IkA287QPhK-dKYJmza0weYv4nOowuwu2" target="_blank">Drive-галерея</a></div></header>
+<div class="toolbar"><select id="mode"><option value="ka">Грузинское слово → ответ</option><option value="scene">Картинка → ответ</option><option value="ru">Русское значение → грузинский</option><option value="mix">Смешанный режим</option></select><select id="cat"><option value="all">Все категории</option></select><button class="shuffle" id="shuffle">Перемешать</button></div>
+<div class="statusbar"><span id="counter" class="pill"></span><span id="score" class="pill"></span></div>
+<div class="stage"><div class="card" id="card"><div class="face front" id="front"></div><div class="face back" id="back"></div></div></div>
+<div class="actions"><button class="again" id="again">Не вспомнил</button><button class="good" id="good">Вспомнил</button><button class="next" id="next">Следующая</button></div><div class="progress"><i id="progress"></i></div>
+</div>
+<script>
+const RAW=`
+სიტყვა|ситква|слово|базовая лексика|СИДИТ + КВА
+ის|ис|он / она / оно|основы|ИС
+ჩვენ|чвен|мы|местоимения|ЧВЕН
+თქვენ|тквен|вы|местоимения|TWIN → ТКВЕН
+ისინი|исини|они|местоимения|И СИНИЕ
+ეს|эс|это|основы|ЭС
+იქ|ик|там|направления|ИК
+ვინ|вин|кто|вопросы|WINE / ВИН
+როდის|родис|когда|вопросы|РОДИЛСЯ
+როგორ|рогор|как|вопросы|РОГА
+არ|ар|не|основы|АР
+ყველაფერი|квелапэри|всё / всё подряд|основы|КВЕЛА + ПЕРЬЯ
+ბევრი|бэври|много|количество|BEAVER / БОБРЫ
+რამდენიმე|рамдэнимэ|несколько|количество|РАМКА + DENIM
+ცოტა|цота|немного / мало|количество|СОТА
+სხვა|схва|другой|основы|СХВАТИ ДРУГОЙ
+ორი|ори|два|числа|OREO
+სამი|сами|три|числа|САМИ
+ოთხი|отхи|четыре|числа|ОТ ХИ-ХИ
+დიდი|диди|большой|описание|ДЯДЯ ДИДИ
+გრძელი|грдзэли|длинный|описание|ГРЯДКА + ЗЕЛЬЕ
+ფართო|парто|широкий|описание|ПОРТ
+სქელი|скэли|толстый / толстый слой|описание|СКЕЛЕТ
+მძიმე|дзимэ|тяжёлый|описание|ДЖИМ
+პატარა|патара|маленький|описание|ПАТАРА
+მოკლე|моклэ|короткий|описание|МОКРЫЙ КЛЕЙ
+ვიწრო|вицро|узкий|описание|VICE / ТИСКИ
+თხელი|тхэли|тонкий|описание|ХЕЛИЙ
+ქალი|кали|женщина|люди|КАЛИ
+კაცი|каци|мужчина|люди|КАЦ
+ადამიანი|адамиани|человек|люди|АДАМ
+ბავშვი|бавшви|ребёнок|люди|БАВ + ШВИ
+ცოლი|цоли|жена|семья|ЦО + ОЛЯ
+ქმარი|кмари|муж|семья|К МАРИ
+დედა|дэда|мама / мать|семья|ДЕДА
+მამა|мама|папа / отец|семья|МАМА наоборот
+ცხოველი|цховэли|животное|животные|ЦХО-ВЕЛИ
+თევზი|тэвзи|рыба|животные|TV + SEA
+ჩიტი|чити|птица|животные|ЧИТАЕТ
+ძაღლი|дзагли|собака|животные|UGLY / АГЛИ
+გველი|гвэли|змея|животные|ГЕЛЬ
+ხე|хэ|дерево|природа|ХЕ-ХЕ
+ტყე|ткэ|лес|природа|ТКЭ
+ხილი|хили|фрукт / фрукты|еда|ЧИЛИ
+თესლი|тэсли|семя / семечко|природа|TESLA
+ფოთოლი|потоли|лист|природа|ПОТОЛОК
+ყვავილი|квавили|цветок|природа|КВА
+ბალახი|балахи|трава|природа|БАЛАХОН
+ხორცი|хорци|мясо|еда|ХОР
+სისხლი|сисхли|кровь|тело|СОСИСКИ ХЛЫНУЛИ
+ძვალი|дзвали|кость|тело|ДЗВАЛИ
+კვერცხი|квэрцхи|яйцо|еда|КВАРЦ
+კუდი|куди|хвост|тело|КУДРИ
+თმა|тма|волосы|тело|ТЬМА
+თავი|тави|голова|тело|TV
+ყური|кури|ухо|тело|КУРИ
+თვალი|твали|глаз|тело|TV + АЛИ
+ცხვირი|цхвири|нос|тело|СХВАТИ НОС
+პირი|пири|рот|тело|ПИР
+კბილი|кбили|зуб|тело|К БИЛИ
+ტერფი|тэрпи|ступня|тело|ТЕРПИ
+ფეხი|пэхи|нога|тело|ПЕХОТА
+მუხლი|мухли|колено|тело|МУХА
+ხელი|хэли|рука / кисть|тело|ХЭЛИ
+მუცელი|муцэли|живот / желудок|тело|МОЦАРЕЛЛА
+კისერი|кисэри|шея|тело|КИСЕЛЬ
+ზურგი|зурги|спина|тело|ZURG-рюкзак
+გული|гули|сердце|тело|GHOUL / ГУЛЬ
+სმა|сма|пить / питьё|действия|СМАК
+ჭამა|чама|есть / еда как действие|действия|ЧАВКАЕТ МАМА
+სიცილი|сицили|смеяться / смех|действия|СИЦИЛИЯ
+ნახვა|нахва|видеть / увидеть|действия|НАХВА-ТИЛ ВЗГЛЯД
+სმენა|смэна|слышать / слух|действия|СМЕНА
+ცოდნა|цодна|знать / знание|действия|СОТНЯ ЗНАНИЙ
+ფიქრი|пикри|думать / мысль|действия|PIG + КРИ
+შიში|шиши|страх / бояться|эмоции|ШИШКИ
+ძილი|дзили|сон / спать|быт|JELLY / ДЖЕЛЛИ
+ცხოვრება|цховрэба|жить / жизнь|быт|ЦХО + ВРЕМЯ
+ბრძოლა|брдзола|бороться / борьба|действия|BRAWL
+ცურვა|цурва|плавать|действия|SURF
+ფრენა|прэна|летать / полёт|действия|PLANE
+სიარული|сиарули|ходить / прогулка|действия|СИ, Я РУЛЮ
+მოსვლა|мосвла|приходить / прийти|действия|МОСТ + ВОШЛА
+წოლა|цола|лежать|действия|COLA
+ჯდომა|дждома|сидеть|действия|ДОМА
+დგომა|дгома|стоять|действия|ДОМА, НО СТОИТ
+ბრუნვა|брунва|поворачивать / вращаться|действия|BROWN
+დაცემა|дацэма|падать / падение|действия|ДА, ЦЕМЕНТ
+მიცემა|мицэма|давать|действия|МИТЯ ВСЕМ
+ჭერა|чэра|держать|действия|ЧЁРНАЯ РУКА
+რეცხვა|рэцхва|мыть / мыться|быт|РЕЧКА
+წევა|цэва|тянуть|действия|ЦЕПЬ
+ბიძგება|бидзгэба|толкать / толчок|действия|БИЦЕПС
+სროლა|срола|бросать / кидать|действия|С РОЛЛА
+შეკვრა|шэквра|связывать / завязывать|действия|ШЕЯ + КВА
+კერვა|кэрва|шить|действия|КЕРРИ-ШВЕЯ
+თვლა|твла|считать|действия|TV
+თქმა|ткма|говорить / сказать|действия|ТАК, МА
+მღერა|мгэра|петь|действия|МЕГА-АРИЯ
+მზე|мзэ|солнце|природа|МЗЭ
+მთვარე|мтварэ|луна|природа|MTV
+ფანჯარა|панджара|окно|дом|ПАН ЖАРА
+კედელი|кедели|стена|дом|КЕДЫ ЛИ
+ჭერი|чери|потолок|дом|CHERRY
+კარი|кари|дверь|дом|CURRY / КАРРИ
+სკამი|сками|стул|дом|СКАМЬЯ
+ქუჩა|куча|улица|город|КУЧА
+ბაღი|баги|сад|природа|БАГГИ
+ჭიქა|чика|чашка / стакан|еда / посуда|CHICA
+`;
+const IMAGE_MAP={
+'ფანჯარა':['15oq00F8k1oJOIBJYE4E9OeMcIAHMTQg-',.84],
+'კედელი':['1aRd-eyzDxR78OcL75wcC4Ye7M-VozAJP',.84],
+'ჭერი':['1a0-714V1tOgpFQxX4EK8E2jSmu7Ax2N5',.84],
+'კარი':['1UDbiu1m8iZY_kLX58qTtBZhx4lBLQG5F',.84],
+'სკამი':['1CnAs1lajNADWLn6W1Q93PiLjoz5Hz0mn',.84],
+'ქუჩა':['1COTKVglKK-WBYq2jpnlqYq2V8vqV0Ci5',.84],
+'ბაღი':['1qsV73FMbNyWE9uLLbjw3NUYqA-CdXPeU',.84],
+'ჭიქა':['1V-rXM-DMIE8ewHDXhtTXTgGyTgstJnzR',.84],
+'სიტყვა':['1Empx29kY2EoMIm56W32RYGFDJYJSQp1f',1.03]
+};
+const cards=RAW.trim().split('\n').map((line,i)=>{const [ka,read,ru,cat,hook]=line.split('|');return{id:i+1,ka,read,ru,cat,hook}});
+const iconRules=[
+[/окно/i,'🥵🪟'],[/стен/i,'👟🧱'],[/потол/i,'🍒💡'],[/двер/i,'🚪🍛'],[/стул/i,'🪑'],[/улиц/i,'🛣️🧸'],[/сад/i,'🌷🏎️'],[/чаш|стакан/i,'☕👩'],[/слово/i,'🐸📖'],
+[/женщ/i,'👩'],[/мужчин/i,'👨'],[/человек/i,'🧍'],[/ребён/i,'👶'],[/жена/i,'👰'],[/муж$/i,'🤵'],[/мама|мать/i,'👩‍🍼'],[/папа|отец/i,'👨‍🍼'],
+[/животное/i,'🐾🦊'],[/рыба/i,'🐟📺'],[/птица/i,'🐦📖'],[/собака/i,'🐶'],[/змея/i,'🐍'],[/дерево/i,'🌳'],[/лес/i,'🌲🌲🌲'],[/фрукт/i,'🍎🌶️'],[/семя/i,'🌱🚗'],[/лист$/i,'🍃'],[/цветок/i,'🌸🐸'],[/трава/i,'🌿'],
+[/мясо/i,'🥩🎤'],[/кров/i,'🩸'],[/кость/i,'🦴🐶'],[/яйцо/i,'🥚💎'],[/хвост/i,'🐈➰'],[/волос/i,'💇‍♂️'],[/голова/i,'🧑📺'],[/ухо/i,'👂🚬'],[/глаз/i,'👁️📺'],[/нос/i,'👃✋'],[/рот/i,'👄🍽️'],[/зуб/i,'🦷🔨'],[/ступн/i,'🦶🧱'],[/нога/i,'🦵'],[/колено/i,'🦵🪰'],[/рука/i,'✋'],[/живот|желуд/i,'🤰🧀'],[/шея/i,'🧣🥤'],[/спина/i,'🎒'],[/сердце/i,'❤️👹'],
+[/пить/i,'🥤😋'],[/есть \/ еда/i,'🍽️😋'],[/сме/i,'😂🏝️'],[/видеть/i,'👁️🖼️'],[/слыш/i,'👂🏭'],[/знать/i,'🧠📚'],[/думать/i,'🐷💭'],[/страх|бояться/i,'😱🌰'],[/сон|спать/i,'😴🛏️'],[/жить|жизнь/i,'🕰️🐾'],[/бороть/i,'🥊'],[/плавать/i,'🏊‍♂️🏄'],[/летать/i,'✈️'],[/ходить/i,'🚶‍♂️🛞'],[/приход/i,'🌉🚪'],[/лежать/i,'🥤🛏️'],[/сидеть/i,'🐸🪑'],[/стоять/i,'🧍🏠'],[/поворач|вращ/i,'🐻🔄'],[/падать/i,'🤸‍♂️🪣'],[/давать/i,'🎁🤲'],[/держать/i,'✊🪢'],[/мыть/i,'🛁🌊'],[/тянуть/i,'🪢💪'],[/толкать/i,'💪🚗'],[/бросать/i,'🍣💨'],[/связывать/i,'🎀🐸'],[/шить/i,'🧵🪡'],[/считать/i,'📺🔢'],[/говорить/i,'🗣️👩'],[/петь/i,'🎤🎶'],
+[/солнце/i,'☀️😎'],[/луна/i,'🌙📺'],[/больш/i,'🐘🚪'],[/длинн/i,'📏🌱'],[/широк/i,'⚓🌊'],[/толст/i,'💀🪑'],[/тяж/i,'🏋️‍♂️'],[/малень/i,'🐘☕'],[/корот/i,'📏🧴'],[/узк/i,'🗜️🛣️'],[/тонк/i,'🎈📄'],
+[/два/i,'🍪🍪'],[/три/i,'👤👤👤'],[/четыр/i,'😂😂😂😂'],[/кто/i,'🕵️🍷'],[/когда/i,'🎂📅'],[/как/i,'🐐📖'],[/много/i,'🦫🦫🦫'],[/несколько/i,'👖🖼️'],[/немного|мало/i,'🍯🐝'],[/другой/i,'👉🔀'],[/мы$/i,'👥'],[/вы$/i,'👯'],[/они/i,'🔵🔵🔵'],[/он \/ она/i,'👨👩📦'],[/это/i,'👉🅢'],[/там/i,'🌄😮'],[/не$/i,'🏴‍☠️🚫'],[/всё/i,'📦🪑🐈🧀']
+];
+const catEmoji={'основы':'🧠','местоимения':'👥','направления':'🧭','вопросы':'❓','количество':'🔢','числа':'🔢','описание':'📐','люди':'🧍','семья':'🏠','животные':'🐾','природа':'🌿','еда':'🍽️','еда / посуда':'🍽️','тело':'🫀','действия':'⚡','эмоции':'🙂','быт':'🏠','дом':'🏠','город':'🏙️','базовая лексика':'🔤'};
+function emojis(c){for(const [r,e] of iconRules){if(r.test(c.ru+' '+c.hook))return e}return catEmoji[c.cat]||'🧠✨'}
+const $=s=>document.querySelector(s);let deck=[],idx=0,flipped=false;let stats=JSON.parse(localStorage.getItem('geoMnemoStats')||'{"right":0,"wrong":0}');
+function driveThumb(id,w=1100){return `https://drive.google.com/thumbnail?id=${id}&sz=w${w}`}
+function categories(){[...new Set(cards.map(c=>c.cat))].sort().forEach(c=>$('#cat').insertAdjacentHTML('beforeend',`<option>${c}</option>`))}
+function rebuild(){const cat=$('#cat').value;deck=cards.filter(c=>cat==='all'||c.cat===cat);deck.sort(()=>Math.random()-.5);idx=0;render()}
+function fallbackScene(c){return `<div class="scene"><div class="emojiScene">${emojis(c)}</div><div class="hint">нажми, чтобы открыть ответ</div></div>`}
+function frontFor(c){let mode=$('#mode').value;if(mode==='mix')mode=['ka','scene','ru'][Math.floor(Math.random()*3)];if(mode==='ka')return `<div class="frontInner"><div class="frontWord">${c.ka}</div><div class="hint">что это значит?</div></div>`;if(mode==='ru')return `<div class="frontInner"><div class="frontRu">${c.ru}</div><div class="hint">как будет по-грузински?</div></div>`;const im=IMAGE_MAP[c.ka];if(im)return `<div class="scene" style="aspect-ratio:${im[1]}"><img class="sceneImg" src="${driveThumb(im[0])}" onerror="this.parentNode.outerHTML=window.fallbackSceneById(${c.id})"><div class="hint">что за слово?</div></div>`;return fallbackScene(c)}
+window.fallbackSceneById=id=>fallbackScene(cards.find(x=>x.id===id));
+function backFor(c){const im=IMAGE_MAP[c.ka];return `<button class="speak" onclick="event.stopPropagation();speak('${c.ka.replace(/'/g,"\\'")}')">🔊</button><div class="answerText"><div class="answerKa">${c.ka}</div><div class="reading">${c.read}</div><div class="meaning">${c.ru}</div><div class="mnemo"><b>Созвучие:</b> ${c.hook}<br><span style="color:#667069">Свяжи это созвучие с абсурдной сценой на карточке.</span></div>${im?`<img class="answerImage" src="${driveThumb(im[0])}" onerror="this.remove()">`:''}</div>`}
+function render(){if(!deck.length){$('#front').innerHTML='<div class="empty">Нет карточек</div>';return}const c=deck[idx%deck.length];flipped=false;$('#card').classList.remove('flipped');$('#front').innerHTML=frontFor(c);$('#back').innerHTML=backFor(c);$('#counter').textContent=`${idx%deck.length+1} / ${deck.length}`;$('#score').textContent=`✓ ${stats.right} · ✕ ${stats.wrong}`;$('#progress').style.width=`${((idx%deck.length+1)/deck.length)*100}%`}
+function flip(){flipped=!flipped;$('#card').classList.toggle('flipped',flipped)}function next(){idx=(idx+1)%deck.length;render()}function grade(ok){ok?stats.right++:stats.wrong++;localStorage.setItem('geoMnemoStats',JSON.stringify(stats));$('#score').textContent=`✓ ${stats.right} · ✕ ${stats.wrong}`;next()}function speak(t){if(!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(t);u.lang='ka-GE';u.rate=.78;speechSynthesis.cancel();speechSynthesis.speak(u)}
+$('#card').onclick=flip;$('#next').onclick=next;$('#good').onclick=()=>grade(true);$('#again').onclick=()=>grade(false);$('#shuffle').onclick=rebuild;$('#cat').onchange=rebuild;$('#mode').onchange=render;document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();flip()}if(e.key==='ArrowRight')next();if(e.key==='1')grade(false);if(e.key==='2')grade(true)});categories();rebuild();
+</script>
+</body></html>
